@@ -7,11 +7,11 @@ from .serializers import *
 
 # Dishes
 class DishListAPIView(ListAPIView):
-    queryset = Dish.objects.all()
-    serializer_class = DishSerializer 
+    queryset = Menu.objects.all()
+    serializer_class = MenuSerializer 
     filter_backends = [DjangoFilterBackend, OrderingFilter,SearchFilter]
-    filterset_fields = ['name_dish',"prf_time", "time_category"] 
-    search_fields = ['name_dish',"time_category"]
+    filterset_fields = ['name',"category"] 
+    search_fields = ['name',"category"]
     def get_queryset(self):
         queryset = super().get_queryset()
         price_min = self.request.query_params.get('price_min', None)
@@ -21,16 +21,16 @@ class DishListAPIView(ListAPIView):
         return queryset
     
 class DishCreateAPIView(CreateAPIView):
-    queryset = Dish.objects.all()
-    serializer_class = DishSerializer
+    queryset = Menu.objects.all()
+    serializer_class = MenuSerializer
 
 class DishRetrieveUpdateAPIView(RetrieveUpdateAPIView):
-    queryset = Dish.objects.all()
-    serializer_class = DishSerializer
+    queryset = Menu.objects.all()
+    serializer_class = MenuSerializer
 
 
 class DishDestroyAPIView(DestroyAPIView):
-    queryset = Dish.objects.all()
+    queryset = Menu.objects.all()
 
 class TableListAPIView(ListAPIView):
     queryset = Table.objects.all()
@@ -96,7 +96,7 @@ class OrderListAPIView(ListAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer 
     filter_backends = [DjangoFilterBackend, OrderingFilter,SearchFilter]
-    filterset_fields = ['dish',"bill",] 
+    filterset_fields = ['name',"bill",] 
     search_fields = ['id',]
 
 class OrderCreateAPIView(CreateAPIView):

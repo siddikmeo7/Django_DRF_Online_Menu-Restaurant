@@ -1,16 +1,15 @@
 from rest_framework import serializers
-from .models import Dish, Table, Bill, Order
+from .models import Menu, Table, Bill, Order
 
-class DishSerializer(serializers.ModelSerializer):
+class MenuSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Dish
+        model = Menu
         fields = "__all__"
 
 class TableSerializer(serializers.ModelSerializer):
     class Meta:
         model = Table
         fields = "__all__"
-
 
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
