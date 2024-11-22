@@ -27,8 +27,8 @@ class Table(models.Model):
     )
     CHOICE_TABLE =(
         ("vip", "vip"),
-        ("table", "Стол"),
-        ("Cud", "Кад")
+        ("table", "table"),
+        ("Cud", "cud")
     )
     type = models.CharField(max_length=50, choices=CHOICE_TABLE)
     max_person = models.IntegerField()
