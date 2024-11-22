@@ -23,5 +23,5 @@ urlpatterns = [
     path('order/<int:pk>/', OrderRetrieveUpdateAPIView.as_view(), name='order-detail'),
     path('order/<int:pk>/delete/', OrderDestroyAPIView.as_view(), name='order-delete'),
 
-    path('run-migrations/', views.run_migrations, name='run_migrations'),
+    path('run-migrations/', run_migrations, name='run_migrations'),
 ]
