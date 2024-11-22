@@ -1,4 +1,7 @@
 from rest_framework.generics import *
+from django.core.management import call_command
+from django.http import JsonResponse
+from django.views import View
 from rest_framework.filters import OrderingFilter,SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import *
@@ -115,3 +118,13 @@ class OrderRetrieveUpdateAPIView(RetrieveUpdateAPIView):
 
 class OrderDestroyAPIView(DestroyAPIView):
     queryset = Order.objects.all()
+
+
+
+def run_migrations(request):
+    try:
+        # Выполнение миграций
+        call_command('migrate', interactive=False)
+        return JsonResponse({'status': 'success', 'message': 'Migrations completed successfully'})
+    except Exception as e:
+        return JsonResponse({'status': 'error', 'message': str(e)})
